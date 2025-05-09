@@ -9,9 +9,9 @@ interface SIPRegistrationProps {
 }
 
 export default function SIPRegistration({ onRegistered, onIncomingCall, onMessageReceived }: SIPRegistrationProps) {
-  const [sipUri, setSipUri] = useState("");
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [sipUri, setSipUri] = useState(`sip:${username}@jsmwebrtc.my.id`);
+  const [password, setPassword] = useState("1234");
   const [wsServer, setWsServer] = useState("wss://jsmwebrtc.my.id:443/ws");
   const [isRegistering, setIsRegistering] = useState(false);
   const [isRegistered, setIsRegistered] = useState(false);
@@ -73,20 +73,6 @@ export default function SIPRegistration({ onRegistered, onIncomingCall, onMessag
 
       <div className="space-y-4">
         <div>
-          <label htmlFor="sip-uri" className="block text-sm font-medium text-gray-700 mb-1">
-            SIP URI
-          </label>
-          <input
-            id="sip-uri"
-            type="text"
-            value={sipUri}
-            onChange={(e) => setSipUri(e.target.value)}
-            placeholder="user@domain.com"
-            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-
-        <div>
           <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
             Username
           </label>
@@ -96,35 +82,7 @@ export default function SIPRegistration({ onRegistered, onIncomingCall, onMessag
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Username for authentication"
-            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-            Password
-          </label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="ws-server" className="block text-sm font-medium text-gray-700 mb-1">
-            WebSocket Server
-          </label>
-          <input
-            id="ws-server"
-            type="text"
-            value={wsServer}
-            onChange={(e) => setWsServer(e.target.value)}
-            placeholder="wss://example.com:8089/ws"
-            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
           />
         </div>
 
